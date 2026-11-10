@@ -1,0 +1,14 @@
+﻿@model Category
+
+<h1>@Model.Name</h1>
+
+@foreach (Dish each_dish in Model.Dishes)
+{
+    <partial name="_DishCard"
+             model="each_dish" />
+}
+
+@if (Model.Dishes.Count == 0)
+{
+    <p>Nothing in @Model.Name yet.</p>
+}

@@ -1,0 +1,48 @@
+@model Dish
+@if (Model.Category != null)
+{
+    <a class="badge bg-secondary"
+       asp-controller="Category"
+       asp-action="Details"
+       asp-route-id="@Model.CategoryId">
+        @Model.Category.Name
+    </a>
+}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title">
+            @Model.Name
+            @if (Model.IsSpicy)
+            {
+                <span class="badge bg-danger">Spicy</span>
+            }
+        </h5>
+        <p class="card-text">$@Model.Price.ToString("N0")</p>
+        @* Order form (POST) *@
+        <form method="post" asp-controller="Menu" asp-action="Order" asp-route-id="@Model.Id" style="display:inline">
+            <button type="submit" class="btn btn-sm btn-outline-primary">Order</button>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <a class="btn btn-sm btn-link" asp-controller="Menu"
+            asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+            <a class="btn btn-sm btn-link text-danger"
+            asp-controller="Menu" asp-action="Delete"
+            asp-route-id="@Model.Id">Delete</a>
+        }
+        </form>
+        @* Edit link *@
+
+@if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+{
+    <a class="btn btn-sm btn-link" asp-controller="Menu"
+       asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+}
+@if (User.IsInRole("Admin"))
+{
+    <a class="btn btn-sm btn-link text-danger" asp-controller="Menu"
+       asp-action="Delete" asp-route-id="@Model.Id">Delete</a>
+}
+        }
+    </div>
+</div>

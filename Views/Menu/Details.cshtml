@@ -1,0 +1,9 @@
+@model Dish
+
+<h1>@Model.Name</h1>
+<p>$@Model.Price.ToString("N0") a plate</p>
+@if (Model.IsSpicy)
+{
+    <p>Spicy. Ask for it mild.</p>
+}
+<a asp-controller="Menu" asp-action="Show">Back to the menu</a>

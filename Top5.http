@@ -1,0 +1,29 @@
+@host = http://localhost:5279
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiM2I0NDcxNi01MDhlLTRlYjItYWFlYy00Y2RiYzUzNjY4Y2QiLCJlbWFpbCI6IkphbUxhYkBnbWFpbC5jb20iLCJyb2xlIjoiQWRtaW4iLCJleHAiOjE3OTQzNTA2OTMsImlzcyI6IlRvcDUiLCJhdWQiOiJUb3A1QXBpIn0.eZWumuT2KkfVyt3rCRqHFcCFh3PWnRso2SjXsJkPjC4
+
+POST {{host}}/api/dishes
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "name": "Curry goat",
+  "price": 2200,
+  "isSpicy": true,
+  "categoryId": 1
+}
+
+###
+DELETE {{host}}/api/dishes/3
+###
+POST {{host}}/api/auth/login
+Content-Type: application/json
+{ "email": "JamLab@gmail.com", "password": "!d3KhQ9RJPda-2." }
+
+
+
+
+
+
+
+
+
